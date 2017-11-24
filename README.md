@@ -50,7 +50,7 @@ Let´s go:
 4.) Options:
 ```javascript
 $("#offcanvas").offcanvasmenu({
-	menuTrigger: "some-other-id" // With this id you trigger the action (default: trigger)
+    menuTrigger: "some-other-id" // With this id you trigger the action (default: trigger)
     position: "right", // which side the menu is coming out
     speed: "0.3", // animation speed (example: 0.5 = 500ms; do not write 500 etc)
     width: "220px" // width of the menu
