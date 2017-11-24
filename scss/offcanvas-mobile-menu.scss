@@ -1,0 +1,39 @@
+$bgcolor:     #888;
+$width:       220px;
+$linkColor:   #FFF;
+$border:      1px solid rgba(255,255,255,0.5);
+$shadow:      0 0 15px #000 inset;
+
+body {
+  -webkit-transition: all 0.3s ease-in-out;
+  -transition: all 0.3s ease-in-out;
+  position: relative;
+  left: 0;
+  &.offcanvas {
+    left: -$width;
+  }
+}
+
+#offcanvas {
+  -webkit-transform: translate($width, 0);
+  transform: translate($width, 0);
+  -webkit-transition: all 0.3s ease-in-out;
+  -transition: all 0.3s ease-in-out;
+  position: fixed;
+  top: 0;
+  width: $width;
+  right: 0;
+  height: 100vh;
+  background: $bgcolor;
+  box-shadow: $shadow;
+  &.getOut {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  a {
+    color: $linkColor;
+    display: block;
+    border-bottom: $border;
+    padding: 15px;
+  }
+}

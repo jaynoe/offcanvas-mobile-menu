@@ -1,29 +1,38 @@
-# offcanvas-mobile-menu
-HTML, jQuery and CSS mobile Offcanvas menu
-
-What you need:
-
-* jQuery (min 1.12.4)
-
-Let´s go:
-
-1.) Download CSS + JS
-
-2.) Bind the CSS:
-```html
+<!DOCTYPE html>
+<html>
 <head>
-[...]
-<link rel="stylesheet" href="css/offcanvas-mobile-menu.css" />
+  <meta charset="utf-8" />
+  <title>Example Offcanvas mobile menu</title>
+  <link rel="stylesheet" href="css/offcanvas-mobile-menu.css" />
+  <style type="text/css">
+  * {padding:0;margin:0;border:0;}
+    header {
+      background: #CCC;
+      padding: 25px;
+      text-align: right;
+    }
+    li {
+      list-style-type: none;
+    }
+    #main {
+      background: #aaa;
+      height: 100vh;
+      width: 100%;
+    }
+    button {
+      padding: 5px;
+    }
+  </style>
 </head>
-```
 
-3.) HTML structure:
-```html
 <body>
+
   <header>
     <button id="trigger">trigger menu</button>
   </header>
+
   <section id="main"></div>
+
   <section id="offcanvas">
     <nav>
       <ul>
@@ -34,6 +43,8 @@ Let´s go:
         <li><a href="#">Link 5</a></li>
     </nav>
   </section>
+
+
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="jquery.mobile-offcanvas-menu.js"></script>
   <script>
@@ -41,16 +52,5 @@ Let´s go:
   </script>
 
 </body>
-```
 
-5.) Options:
-```javascript
-$("#offcanvas").offcanvasmenu({
-	menuTrigger: "some-other-id" // With this id you trigger the action (default: #trigger)
-});
-```
-
-Further ideas are in progress:
-
-* Option from which side the menu opens (left, right)
-* Animation speed
+</html>
