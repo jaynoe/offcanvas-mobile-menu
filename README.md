@@ -43,7 +43,7 @@ Let´s go:
 </body>
 ```
 
-5.) Options:
+4.) Options:
 ```javascript
 $("#offcanvas").offcanvasmenu({
 	menuTrigger: "some-other-id" // With this id you trigger the action (default: #trigger)
