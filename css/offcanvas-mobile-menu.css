@@ -1,31 +1,10 @@
-body {
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  position: relative;
-  left: 0;
-}
-
-body.offcanvas {
-  left: -220px;
-}
-
 #offcanvas {
-  -webkit-transform: translate(220px, 0);
-  transform: translate(220px, 0);
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  display: none;
   position: fixed;
   top: 0;
-  width: 220px;
-  right: 0;
   height: 100vh;
   background: #888;
   box-shadow: 0 0 15px #000 inset;
-}
-
-#offcanvas.getOut {
-  -webkit-transform: translate(0, 0);
-  transform: translate(0, 0);
 }
 
 #offcanvas a {

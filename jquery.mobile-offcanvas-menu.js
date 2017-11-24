@@ -11,33 +11,92 @@
 
     // Default options
     options = $.extend({
-      menuTrigger: "trigger"
+      menuTrigger: "trigger",
+      position: "right",
+      speed: "0.3",
+      width: "220px"
     }, options);
 
     // Build the vars
     // Containers:
-    var canvas = $(this);
-    var trigger = $("#" + options.menuTrigger);
-    var body = $("body");
-    var link = canvas.find("a");
+    canvas = $(this);
+    trigger = $("#" + options.menuTrigger);
+    body = $("body");
+    link = canvas.find("a");
+    pos = options.position;
+
+    // inline styles
+    // for body
+    body.css({
+      "-webkit-transition": "all " + options.speed + "s ease-in-out",
+      "transition": "all " + options.speed + "s ease-in-out",
+      "position": "relative"
+    })
+    // for offcanvas:
+    canvas.css({
+      "-webkit-transition": "all " + options.speed + "s ease-in-out",
+      "transition": "all " + options.speed + "s ease-in-out",
+      "width": options.width,
+      "display": "block"
+    });
+
+    // check position
+    if(pos == "right") {
+      body.css("left", "0");
+      canvas.css({
+        "right": "0",
+        "-webkit-transform": "translate(" + options.width + ", 0)",
+        "transform": "translate(" + options.width + ", 0)"
+      });
+    } else {
+      body.css("right", "0");
+      canvas.css({
+        "left": "0",
+        "-webkit-transform": "translate(-" + options.width + ", 0)",
+        "transform": "translate(-" + options.width + ", 0)"
+      });
+    }
+
+    // function out & hide
+    function canvasOut() {
+      canvas.css({
+        "-webkit-transform": "translate(0, 0)",
+        "transform": "translate(0, 0)"
+      });
+
+      if(pos == "right") { body.css("left", "-" + options.width); }
+      else { body.css("right", "-" + options.width); }
+    }
+
+    function canvasHide() {
+
+      if(pos == "right") {
+        body.css("left", "0");
+        canvas.css({
+          "-webkit-transform": "translate(" + options.width + ", 0)",
+          "transform": "translate(" + options.width + ", 0)",
+        });
+      } else {
+        body.css("right", "0");
+        canvas.css({
+          "left": "0",
+          "-webkit-transform": "translate(-" + options.width + ", 0)",
+          "transform": "translate(-" + options.width + ", 0)"
+        });
+      }
+    }
 
     // if click on the trigger
     trigger.click(function() {
-      // get the canvas out
-      canvas.addClass("getOut");
-      body.addClass("offcanvas");
-      var clicks = $(this).data('clicks');
-      if(clicks) {
-        canvas.removeClass("getOut");
-        body.removeClass("offcanvas");
-      }
+      canvasOut();
+      clicks = $(this).data('clicks');
+      if(clicks) { canvasHide(); }
       $(this).data("clicks", !clicks);
     });
 
-    // close wehen click on link in menu
+    // close when click on link in menu
     link.click(function() {
-      canvas.removeClass("getOut");
-		  body.removeClass("offcanvas");
+      canvasHide();
 	  });
 
   };

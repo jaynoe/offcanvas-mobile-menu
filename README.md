@@ -20,10 +20,13 @@ Let´s go:
 3.) HTML structure:
 ```html
 <body>
+
   <header>
     <button id="trigger">trigger menu</button>
   </header>
-  <section id="main"></div>
+
+  <section id="main"></section>
+
   <section id="offcanvas">
     <nav>
       <ul>
@@ -34,6 +37,7 @@ Let´s go:
         <li><a href="#">Link 5</a></li>
     </nav>
   </section>
+
   <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
   <script src="jquery.mobile-offcanvas-menu.js"></script>
   <script>
@@ -46,11 +50,13 @@ Let´s go:
 4.) Options:
 ```javascript
 $("#offcanvas").offcanvasmenu({
-	menuTrigger: "some-other-id" // With this id you trigger the action (default: #trigger)
+	menuTrigger: "some-other-id" // With this id you trigger the action (default: trigger)
+    position: "right", // which side the menu is coming out
+    speed: "0.3", // animation speed (example: 0.5 = 500ms; do not write 500 etc)
+    width: "220px" // width of the menu
 });
 ```
 
 Further ideas are in progress:
 
-* Option from which side the menu opens (left, right)
-* Animation speed
+* Close menu not only by clicking the trigger id
