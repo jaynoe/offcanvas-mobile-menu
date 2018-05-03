@@ -14,7 +14,9 @@
       menuTrigger: "trigger",
       position: "right",
       speed: "0.3",
-      width: "220px"
+      width: "220px",
+      fixedContainer: false,
+      fixedContainerName: ""
     }, options);
 
     // Build the vars
@@ -24,6 +26,7 @@
     body = $("body");
     link = canvas.find("a");
     pos = options.position;
+    fc = $("#" + options.fixedContainerName);
 
     // inline styles
     // for body
@@ -39,6 +42,13 @@
       "width": options.width,
       "display": "block"
     });
+    // for fixedContainer
+    if(options.fixedContainer == true) {
+    	fc.css({
+    		"-webkit-transition": "all " + options.speed + "s ease-in-out",
+    		"transition": "all " + options.speed + "s ease-in-out",
+    	})
+    }
 
     // check position
     if(pos == "right") {
@@ -48,6 +58,7 @@
         "-webkit-transform": "translate(" + options.width + ", 0)",
         "transform": "translate(" + options.width + ", 0)"
       });
+      fc.css("left", "0");
     } else {
       body.css("right", "0");
       canvas.css({
@@ -55,6 +66,7 @@
         "-webkit-transform": "translate(-" + options.width + ", 0)",
         "transform": "translate(-" + options.width + ", 0)"
       });
+      fc.css("right", "0");
     }
 
     // function out & hide
@@ -64,8 +76,15 @@
         "transform": "translate(0, 0)"
       });
 
-      if(pos == "right") { body.css("left", "-" + options.width); }
-      else { body.css("right", "-" + options.width); }
+      if(pos == "right") { 
+      	body.css("left", "-" + options.width);
+      	fc.css("left", "-" + options.width);
+      }
+      else {
+      	body.css("right", "-" + options.width);
+      	fc.css("right", "-" + options.width);
+      	
+      }
     }
 
     function canvasHide() {
@@ -76,6 +95,7 @@
           "-webkit-transform": "translate(" + options.width + ", 0)",
           "transform": "translate(" + options.width + ", 0)",
         });
+        fc.css("left", "0");
       } else {
         body.css("right", "0");
         canvas.css({
@@ -83,6 +103,7 @@
           "-webkit-transform": "translate(-" + options.width + ", 0)",
           "transform": "translate(-" + options.width + ", 0)"
         });
+        fc.css("right", "0");
       }
     }
 
@@ -97,7 +118,7 @@
     // close when click on link in menu
     link.click(function() {
       canvasHide();
-	  });
+    });
 
   };
 
