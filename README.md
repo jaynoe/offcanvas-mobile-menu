@@ -35,6 +35,7 @@ Let´s go:
         <li><a href="#">Link 3</a></li>
         <li><a href="#">Link 4</a></li>
         <li><a href="#">Link 5</a></li>
+      </ul>
     </nav>
   </section>
 
@@ -54,6 +55,8 @@ $("#offcanvas").offcanvasmenu({
     position: "right", // which side the menu is coming out
     speed: "0.3", // animation speed (example: 0.5 = 500ms; do not write 500 etc)
     width: "220px" // width of the menu
+    fixedContainer: false,
+    fixedContainerName: ""
 });
 ```
 
